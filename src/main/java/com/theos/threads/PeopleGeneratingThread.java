@@ -18,6 +18,7 @@ public class PeopleGeneratingThread extends Thread {
     public PeopleGeneratingThread(Building building) {
         this.building = building;
         this.buildingsNumberOfFloors = building.getNumberOfFloors();
+        start();
     }
 
     public void run() {
@@ -30,7 +31,7 @@ public class PeopleGeneratingThread extends Thread {
             }
             building.addPersonToTheFloor(randomFloor, createPerson(randomMass, randomTargetFloor));
             try {
-                sleep(2000);
+                sleep(random.nextInt(4000)+1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

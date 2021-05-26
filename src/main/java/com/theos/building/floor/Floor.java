@@ -1,15 +1,14 @@
-package com.theos.building;
+package com.theos.building.floor;
 
 import com.theos.person.Person;
+import com.theos.threads.FloorButtonClickerThread;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Queue;
+import java.util.*;
+
 
 public class Floor {
-    private ArrayList<Person> up = new ArrayList<Person>();
-    private ArrayList<Person> down = new ArrayList<Person>();
+    private Queue<Person> down = new LinkedList<>();
+    private Queue<Person> up = new LinkedList<>();
     private final int number;
 
     public Floor(int number) {
@@ -20,11 +19,11 @@ public class Floor {
         return new Floor(number);
     }
 
-    public ArrayList<Person> getQueueUp() {
+    public Queue<Person> getQueueUp() {
         return up;
     }
 
-    public ArrayList<Person> getQueueDown() {
+    public Queue<Person> getQueueDown() {
         return down;
     }
 
@@ -38,6 +37,7 @@ public class Floor {
         } else {
           down.add(person);
         }
+        FloorButtonClickerThread floorButtonClickerThread = new FloorButtonClickerThread(this);
     }
 
 }

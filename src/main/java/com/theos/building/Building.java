@@ -1,6 +1,9 @@
 package com.theos.building;
 
+import com.theos.building.elevator.Elevator;
+import com.theos.building.floor.Floor;
 import com.theos.person.Person;
+import com.theos.threads.PeopleGeneratingThread;
 
 public class Building {
 
@@ -14,6 +17,7 @@ public class Building {
     public Building(int numberOfFloors, int numberOfElevators) {
         this.numberOfFloors = numberOfFloors;
         this.numberOfElevators = numberOfElevators;
+        PeopleGeneratingThread peopleGeneratingThread = new PeopleGeneratingThread(this);
     }
 
     public void addPersonToTheFloor(int numberOfFloor, Person person) {
