@@ -31,7 +31,8 @@ public class PeopleGeneratingThread extends Thread {
             }
             building.addPersonToTheFloor(randomFloor, createPerson(randomMass, randomTargetFloor));
             try {
-                sleep(random.nextInt(4000)+1000);
+                //random.nextInt(4000)+
+                sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

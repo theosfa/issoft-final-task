@@ -20,10 +20,10 @@ public class FloorButtonClickerThread extends Thread {
     public void run() {
         while(!floor.getQueueDown().isEmpty() || !floor.getQueueUp().isEmpty()) {
             if (!floor.getQueueDown().isEmpty()) {
-                button.clicked(DOWN);
+                button.clicked(DOWN, floor);
             }
             if (!floor.getQueueUp().isEmpty()) {
-                button.clicked(UP);
+                button.clicked(UP, floor);
             }
         }
     }

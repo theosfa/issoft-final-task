@@ -5,6 +5,9 @@ import com.theos.building.floor.Floor;
 import com.theos.person.Person;
 import com.theos.threads.PeopleGeneratingThread;
 
+import static com.theos.building.elevator.Elevator.generateElevator;
+import static com.theos.building.floor.Floor.generateFloor;
+
 public class Building {
 
     private int numberOfFloors;
@@ -17,6 +20,12 @@ public class Building {
     public Building(int numberOfFloors, int numberOfElevators) {
         this.numberOfFloors = numberOfFloors;
         this.numberOfElevators = numberOfElevators;
+        for (int i = 1; i < getNumberOfFloors()+1; i++){
+            addFloor(generateFloor(i));
+        }
+        for (int i = 1; i < getNumberOfElevators()+1; i++){
+            addElevator(generateElevator(150));
+        }
         PeopleGeneratingThread peopleGeneratingThread = new PeopleGeneratingThread(this);
     }
 

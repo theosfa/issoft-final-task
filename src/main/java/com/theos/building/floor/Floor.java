@@ -5,10 +5,13 @@ import com.theos.threads.FloorButtonClickerThread;
 
 import java.util.*;
 
+import static com.theos.building.floor.ButtonState.DOWN;
+import static com.theos.building.floor.ButtonState.UP;
+
 
 public class Floor {
-    private Queue<Person> down = new LinkedList<>();
-    private Queue<Person> up = new LinkedList<>();
+    private Queue<Person> queueDown = new LinkedList<>();
+    private Queue<Person> queueUp = new LinkedList<>();
     private final int number;
 
     public Floor(int number) {
@@ -20,11 +23,11 @@ public class Floor {
     }
 
     public Queue<Person> getQueueUp() {
-        return up;
+        return queueUp;
     }
 
     public Queue<Person> getQueueDown() {
-        return down;
+        return queueDown;
     }
 
     public int getNumber() {
@@ -33,11 +36,23 @@ public class Floor {
 
     public void addingPersonToFloor(Person person) {
         if (number < person.getTargetFloor()) {
-            up.add(person);
+            queueUp.add(person);
         } else {
-          down.add(person);
+            queueDown.add(person);
         }
         FloorButtonClickerThread floorButtonClickerThread = new FloorButtonClickerThread(this);
+    }
+
+    public Person deletingFirstPersonFromTheQueue(ButtonState buttonState){
+        
+        Person person = null;
+        if (buttonState == UP) {
+            person = queueUp.poll();
+        }else if (buttonState == DOWN) {
+            person =  queueDown.poll();
+        }
+        
+        return person;
     }
 
 }
