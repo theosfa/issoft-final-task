@@ -1,5 +1,5 @@
 
-# IsSoft Final Task<hr>
+# IsSoft Final Task
 <h2>Algoritm:</h2>
 First of all we have class Building, that has PeopleGeneratingThread<br>
 in it's constructor. This thread generates people on random floor with random<br>

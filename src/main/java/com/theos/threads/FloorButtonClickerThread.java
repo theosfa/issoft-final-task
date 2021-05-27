@@ -18,12 +18,17 @@ public class FloorButtonClickerThread extends Thread {
     }
 
     public void run() {
-        while(!floor.getQueueDown().isEmpty() || !floor.getQueueUp().isEmpty()) {
-            if (!floor.getQueueDown().isEmpty()) {
+        while(floor.getQueueDown().peek() != null || floor.getQueueUp().peek() != null) {
+            if (floor.getQueueDown().peek() != null) {
                 button.clicked(DOWN, floor);
             }
-            if (!floor.getQueueUp().isEmpty()) {
+            if (floor.getQueueUp().peek() != null) {
                 button.clicked(UP, floor);
+            }
+            try {
+                sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }

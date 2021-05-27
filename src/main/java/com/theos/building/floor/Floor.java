@@ -34,6 +34,14 @@ public class Floor {
         return number;
     }
 
+    public int getMassOfFirstPersonFromQueueUp() {
+        return queueUp.peek().getMass();
+    }
+
+    public int getMassOfFirstPersonFromQueueDown() {
+        return queueDown.peek().getMass();
+    }
+
     public void addingPersonToFloor(Person person) {
         if (number < person.getTargetFloor()) {
             queueUp.add(person);
@@ -43,16 +51,11 @@ public class Floor {
         FloorButtonClickerThread floorButtonClickerThread = new FloorButtonClickerThread(this);
     }
 
-    public Person deletingFirstPersonFromTheQueue(ButtonState buttonState){
-        
-        Person person = null;
-        if (buttonState == UP) {
-            person = queueUp.poll();
-        }else if (buttonState == DOWN) {
-            person =  queueDown.poll();
-        }
-        
-        return person;
+    public Person deletingFirstPersonFromTheUpQueue() {
+        return queueUp.poll();
+    }
+    public Person deletingFirstPersonFromTheDownQueue() {
+        return queueDown.poll();
     }
 
 }

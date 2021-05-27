@@ -10,4 +10,8 @@ public class ElevatorMovingThread extends Thread{
         this.elevatorSpeed = elevator.getTimeBetweenFloors();
         this.elevatorDoorsSpeed = elevator.getTimeOpensDoors();
     }
+
+    public void run() {
+
+    }
 }
