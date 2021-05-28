@@ -1,6 +1,7 @@
 package com.theos.building;
 
 import com.theos.building.elevator.Elevator;
+import com.theos.building.floor.ButtonState;
 import com.theos.building.floor.Floor;
 import com.theos.person.Person;
 import com.theos.threads.PeopleGeneratingThread;
@@ -56,6 +57,10 @@ public class Building {
     public void addFloor(Floor floor) {
         floors[currentFloorAddingIndex] = floor;
         currentFloorAddingIndex++;
+    }
+
+    public void checkClosestElevator(Floor floor, ButtonState buttonState) {
+
     }
 
 }

@@ -20,7 +20,7 @@ public class Elevator {
     private State state;
     private int timeBetweenFloors = 1000;
     private int timeOpensDoors = 500;
-    private PriorityQueue<Integer> finalFloor = new PriorityQueue<>();
+    private ArrayList<Integer> finalFloor = new ArrayList<>();
     private int availableWeight;
     private ArrayList<Person> listOfPersons = new ArrayList<>();
 
@@ -59,7 +59,7 @@ public class Elevator {
         return timeBetweenFloors;
     }
 
-    public PriorityQueue<Integer> getFinalFloor() {
+    public ArrayList<Integer> getFinalFloor() {
         return finalFloor;
     }
 
@@ -125,4 +125,5 @@ public class Elevator {
             }
         }
     }
+
 }
